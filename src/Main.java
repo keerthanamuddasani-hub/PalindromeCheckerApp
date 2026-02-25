@@ -1,23 +1,24 @@
 public class Main {
 
     public static void main(String[] args) {
+                String word = "radar";
+                char[] characters = word.toCharArray();
+                int start = 0;
+                int end = characters.length - 1;
 
-        // Original string
-        String original = "level";
-
-        // Variable to store reversed string
-        String reversed = "";
-
-        // Reverse the string using for loop
-        for (int i = original.length() - 1; i >= 0; i--) {
-            reversed = reversed + original.charAt(i);   // String concatenation
+                boolean isPalindrome = true;
+                while (start < end) {
+                    if (characters[start] != characters[end]) {
+                        isPalindrome = false;
+                        break;
+                    }
+                    start++;
+                    end--;
+                }
+                if (isPalindrome) {
+                    System.out.println(word + " is a palindrome.");
+                } else {
+                    System.out.println(word + " is not a palindrome.");
+                }
+            }
         }
-
-        // Compare original and reversed using equals()
-        if (original.equals(reversed)) {
-            System.out.println(original + " is a palindrome.");
-        } else {
-            System.out.println(original + " is not a palindrome.");
-        }
-    }
-}
