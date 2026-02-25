@@ -1,19 +1,23 @@
-public class Main {
+public class Main{
     public static void main(String[] args) {
-        String word = "madam";
-        if (isPalindrome(word, 0, word.length() - 1)) {
-            System.out.println(word + " is a palindrome.");
+        String input = "Nurses Run";
+        String normalized = input.toLowerCase().replaceAll("[^a-z0-9]", "");
+        if (isPalindrome(normalized)) {
+            System.out.println(input + " is a palindrome.");
         } else {
-            System.out.println(word + " is not a palindrome.");
+            System.out.println(input + " is not a palindrome.");
         }
     }
-    public static boolean isPalindrome(String str, int start, int end) {
-        if (start >= end) {
-            return true;
+    public static boolean isPalindrome(String str) {
+        int start = 0;
+        int end = str.length() - 1;
+        while (start < end) {
+            if (str.charAt(start) != str.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
         }
-        if (str.charAt(start) != str.charAt(end)) {
-            return false;
-        }
-        return isPalindrome(str, start + 1, end - 1);
+        return true;
     }
 }
