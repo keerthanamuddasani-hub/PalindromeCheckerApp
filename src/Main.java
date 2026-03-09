@@ -1,23 +1,37 @@
-public class Main{
-    public static void main(String[] args) {
-        String input = "Nurses Run";
-        String normalized = input.toLowerCase().replaceAll("[^a-z0-9]", "");
-        if (isPalindrome(normalized)) {
-            System.out.println(input + " is a palindrome.");
-        } else {
-            System.out.println(input + " is not a palindrome.");
+import java.util.Stack;
+
+class PalindromeChecker {
+
+    public boolean checkPalindrome(String word) {
+
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < word.length(); i++) {
+            stack.push(word.charAt(i));
         }
-    }
-    public static boolean isPalindrome(String str) {
-        int start = 0;
-        int end = str.length() - 1;
-        while (start < end) {
-            if (str.charAt(start) != str.charAt(end)) {
+
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) != stack.pop()) {
                 return false;
             }
-            start++;
-            end--;
         }
+
         return true;
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        PalindromeChecker checker = new PalindromeChecker();
+
+        String word = "madam";
+
+        if (checker.checkPalindrome(word)) {
+            System.out.println("Palindrome");
+        } else {
+            System.out.println("Not Palindrome");
+        }
     }
 }
